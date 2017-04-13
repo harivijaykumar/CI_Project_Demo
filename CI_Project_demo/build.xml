@@ -1,4 +1,4 @@
-<project name="Sample usage of Salesforce Ant tasks" default="retrieveUnpackaged" basedir="." xmlns:sf="antlib:com.salesforce">
+<project name="Sample usage of Salesforce Ant tasks" default="deployUnpackaged" basedir="." xmlns:sf="antlib:com.salesforce">
 
     <property file="build.properties"/>
     <property environment="env"/>
@@ -42,7 +42,7 @@
 
    
     <!-- Deploy the unpackaged set of metadata retrieved with retrieveUnpackaged and run tests in this organization's namespace only-->
-    <target name="deployUnpackaged">
+    <target name="deployUnpackaged" depends="retrieveUnpackaged">
       <sf:deploy username="${sf2.username}"
 	  password="${sf2.password}"
 	  sessionId="${sf2.sessionId}"
